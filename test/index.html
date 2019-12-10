@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>截图测试</title>
+        <link href="../src/cropperjs/cropper.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <input id="cropInput" type="file"/>
+        <script src="https://develop.netpad.net.cn/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../src/cropperjs/cropper.min.js"></script>
+        <script src="../src/layer/layer.js"></script>
+        <script src="../dist/1.0.0/CropImg.min.js"></script>
+        <script>
+            document.getElementById('cropInput').onchange =function(e){
+                var file = e.target.files[0];
+                if (!file) return
+            e.target.value = '';//处理问题：第二次选择和第一次同一张图片，窗口不显示
+            new CropImg(window.URL.createObjectURL(file), {
+                stepWidth:16,
+                stepHeight:9,
+                width: 320,
+                height: 200,
+                isCircle: false,
+                callback: function (obj) {
+                    
+                }
+            })
+            }
+        </script>
+    </body>
+</html>
